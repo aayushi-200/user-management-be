@@ -10,15 +10,18 @@ export class DataSourcesService {
   constructor(
     @InjectRepository(DataSourceEntity)
     private dataSourcesRepository: Repository<DataSourceEntity>,
-  ) {}
+  ) { }
 
   findAll(): Promise<DataSourceEntity[]> {
-    return this.dataSourcesRepository.find();
+    return this.dataSourcesRepository.find({
+      relations: { charts: true }
+    });
   }
 
-  // findOne(id: number): Promise<DataSourceEntity> {
-  //   return this.dataSourcesRepository.findOne(id);
-  // }
+  findOne(id: any): Promise<DataSourceEntity> {
+    return this.dataSourcesRepository.findOne(id);
+
+  }
 
   async create(dataSource: DataSourceEntity): Promise<DataSourceEntity> {
     return this.dataSourcesRepository.save(dataSource);

@@ -6,17 +6,17 @@ import { DataSourceEntity } from './data-sources.entity';
 
 @Controller('data-sources')
 export class DataSourcesController {
-  constructor(private readonly dataSourcesService: DataSourcesService) {}
+  constructor(private readonly dataSourcesService: DataSourcesService) { }
 
   @Get()
   findAll(): Promise<DataSourceEntity[]> {
     return this.dataSourcesService.findAll();
   }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string): Promise<DataSourceEntity> {
-  //   return this.dataSourcesService.findOne(+id);
-  // }
+  @Get(':id')
+  findOne(@Param('id') id: string): Promise<DataSourceEntity> {
+    return this.dataSourcesService.findOne(+id);
+  }
 
   @Post()
   create(@Body() dataSource: DataSourceEntity): Promise<DataSourceEntity> {

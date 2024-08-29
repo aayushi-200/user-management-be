@@ -6,8 +6,7 @@ import { Category } from './categories.entity';
 
 @Controller('categories')
 export class CategoriesController {
-  constructor(private readonly categoriesService: CategoriesService) {}
-
+  constructor(private readonly categoriesService: CategoriesService) { }
   @Get()
   findAll(): Promise<Category[]> {
     return this.categoriesService.findAll();
@@ -18,7 +17,7 @@ export class CategoriesController {
   //   return this.categoriesService.findOne(+id);
   // }
 
-  @Post()
+  @Post('/add')
   create(@Body() category: Category): Promise<Category> {
     return this.categoriesService.create(category);
   }

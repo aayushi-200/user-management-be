@@ -6,17 +6,17 @@ import { SubSectionsService } from './sub-section.service';
 
 @Controller('sub-sections')
 export class SubSectionsController {
-  constructor(private readonly subSectionsService: SubSectionsService) {}
+  constructor(private readonly subSectionsService: SubSectionsService) { }
 
   @Get()
   findAll(): Promise<SubSection[]> {
     return this.subSectionsService.findAll();
   }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string): Promise<SubSection> {
-  //   return this.subSectionsService.findOne(+id);
-  // }
+  @Get(':id')
+  findOne(@Param('id') id: string): Promise<SubSection> {
+    return this.subSectionsService.findOne(id);
+  }
 
   @Post()
   create(@Body() subSection: SubSection): Promise<SubSection> {

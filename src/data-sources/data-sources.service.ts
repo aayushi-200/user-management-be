@@ -14,17 +14,17 @@ export class DataSourcesService {
 
   findAll(): Promise<DataSourceEntity[]> {
     return this.dataSourcesRepository.find({
-      relations: { charts: true }
+      relations: { Section: { subSections: true } }
     });
   }
 
   findOne(id: any): Promise<DataSourceEntity> {
-    return this.dataSourcesRepository.findOne(id);
+    return this.dataSourcesRepository?.findOne({ where: { id: id }, relations: { Section: { subSections: true } } },);
 
   }
 
   async create(dataSource: DataSourceEntity): Promise<DataSourceEntity> {
-    return this.dataSourcesRepository.save(dataSource);
+    return await this.dataSourcesRepository.save(dataSource);
   }
 
   async remove(id: number): Promise<void> {

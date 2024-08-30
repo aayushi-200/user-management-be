@@ -5,7 +5,7 @@ import { SectionsService } from './section.service';
 
 @Controller('sections')
 export class SectionsController {
-  constructor(private readonly sectionsService: SectionsService) {}
+  constructor(private readonly sectionsService: SectionsService) { }
 
   @Get()
   findAll(): Promise<Section[]> {

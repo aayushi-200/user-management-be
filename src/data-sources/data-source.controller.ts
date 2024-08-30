@@ -18,6 +18,7 @@ export class DataSourcesController {
     return this.dataSourcesService.findOne(+id);
   }
 
+
   @Post()
   create(@Body() dataSource: DataSourceEntity): Promise<DataSourceEntity> {
     return this.dataSourcesService.create(dataSource);
@@ -27,4 +28,5 @@ export class DataSourcesController {
   remove(@Param('id') id: string): Promise<void> {
     return this.dataSourcesService.remove(+id);
   }
+
 }

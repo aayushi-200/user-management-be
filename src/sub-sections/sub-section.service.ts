@@ -9,15 +9,15 @@ export class SubSectionsService {
   constructor(
     @InjectRepository(SubSection)
     private subSectionsRepository: Repository<SubSection>,
-  ) {}
+  ) { }
 
   findAll(): Promise<SubSection[]> {
     return this.subSectionsRepository.find();
   }
 
-  // findOne(id: number): Promise<SubSection> {
-  //   return this.subSectionsRepository.findOne(id);
-  // }
+  findOne(id: any): Promise<SubSection> {
+    return this.subSectionsRepository.findOne({ where: { subSectionId: id } });
+  }
 
   async create(subSection: SubSection): Promise<SubSection> {
     return this.subSectionsRepository.save(subSection);

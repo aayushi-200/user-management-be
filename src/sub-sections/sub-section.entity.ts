@@ -10,6 +10,19 @@ export class SubSection {
   @Column()
   name: string;
 
+  @Column({ nullable: true })
+  script: string;
+  @Column({ nullable: true })
+  close: Number;
+  @Column({ nullable: true })
+  dayHigh: Number;
+  @Column({ nullable: true })
+  dayLow: Number;
+  @Column({ nullable: true })
+  volume: Number;
+  @Column({ nullable: true })
+  delivery: Number;
+
   @ManyToOne(() => Section, section => section.subSections)
   section: Section;
 }
